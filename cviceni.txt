@@ -1,0 +1,93 @@
+1. Počítání nukleotidů v DNA sekvenci
+Popis:
+Vytvoř program, který:
+
+Načte DNA sekvenci ze souboru nebo zadání uživatelem.
+Spočítá, kolik je jednotlivých nukleotidů (A, T, G, C).
+Určí podíl jednotlivých nukleotidů.
+Klíčové dovednosti:
+Zpracování textu.
+Práce se soubory.
+2. Reverzní komplement DNA
+Popis:
+Vytvoř nástroj, který:
+
+Načte DNA sekvenci.
+Vrátí její reverzní komplement (vymění A ↔ T a G ↔ C, a zároveň otočí sekvenci).
+Klíčové dovednosti:
+String manipulace.
+Použití slovníků pro mapování.
+3. Hledání podsekvencí v DNA
+Popis:
+Napiš program, který:
+Načte DNA sekvenci.
+Hledá, kolikrát se v sekvenci vyskytuje určitá podsekvence (např. ATG).
+Klíčové dovednosti:
+Vyhledávání v textu.
+Práce s cykly.
+4. Parsování FASTA souborů
+Popis:
+FASTA je běžný formát pro ukládání biologických sekvencí. Program by měl:
+
+Načíst FASTA soubor.
+Zobrazit všechny názvy sekvencí a jejich délku.
+Spočítat průměrnou délku sekvencí.
+Klíčové dovednosti:
+Práce s textovými soubory.
+Manipulace s datovými strukturami.
+5. Překlad DNA do proteinů
+Popis:
+Program by měl:
+
+Převést DNA sekvenci na RNA (A → U, T → A, G ↔ C).
+Přeložit RNA sekvenci do aminokyselin (pomocí genetického kódu).
+Vypisovat odpovídající proteiny.
+Klíčové dovednosti:
+Použití slovníků pro genetický kód.
+Zpracování dat v blocích (tripletech).
+6. Výpočet GC obsahu
+Popis:
+GC obsah (podíl G a C v DNA) je důležitým ukazatelem. Napiš program, který:
+
+Spočítá procentuální podíl G a C v DNA sekvenci.
+Umožní porovnat GC obsah mezi dvěma sekvencemi.
+Klíčové dovednosti:
+Matematické výpočty.
+Porovnávání dat.
+7. Generátor náhodné DNA sekvence
+Popis:
+Vytvoř program, který:
+
+Generuje náhodnou DNA sekvenci o dané délce.
+Umožní nastavit podíl jednotlivých nukleotidů (např. 40 % A, 30 % G, 20 % T, 10 % C).
+Klíčové dovednosti:
+Použití knihovny random.
+Práce s pravděpodobností.
+8. Základní vizualizace dat
+Popis:
+Použij knihovny Matplotlib nebo Seaborn, aby:
+
+Vykreslil histogram GC obsahu z několika DNA sekvencí.
+Vytvořil jednoduchý graf délky sekvencí (např. sloupcový graf).
+Klíčové dovednosti:
+Vizualizace dat.
+Práce s knihovnami.
+9. Analyzátor proteinových sekvencí
+Popis:
+Program, který:
+
+Načte sekvence aminokyselin.
+Spočítá podíl jednotlivých aminokyselin.
+Určí nejčastější aminokyselinu.
+Klíčové dovednosti:
+Práce se stringy.
+Použití Pythonových funkcí jako collections.Counter.
+10. Zjednodušený BLAST
+Popis:
+Napodob funkci základního BLASTu (hledání podobností mezi sekvencemi):
+
+Vezmi dvě sekvence a najdi, které úseky jsou identické.
+Vypiš jejich pozice a délku.
+Klíčové dovednosti:
+Porovnávání stringů.
+Efektivní algoritmy.
