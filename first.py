@@ -109,8 +109,8 @@
 # Délku sekvence.
 # (Volitelné) Distribuci velikosti genů (pokud FASTA obsahuje více sekvencí).
 
-filepath = "Homo_sapiens.GRCh38.dna.chromosome.1.fa"
-delkaseq = 50
+filepath = "human dna.fa"
+delkaseq = 25
 
 with open(filepath, 'r') as openfile:
     fileitems = openfile.read()
@@ -125,7 +125,7 @@ for i in fileitems:
 
 dictseq= {}
 pocet = len(fileitems)//delkaseq
-
+print(pocet)
 for g in range(pocet):
     templist =[]
     for i in range(delkaseq):
@@ -133,7 +133,7 @@ for g in range(pocet):
         if index >= len(listitems):  
             break
         templist.append(listitems[index])
-        if i == 49:
+        if i == delkaseq-1:
             dictseq[g] = templist
     if g >= pocet-1:
         break
@@ -142,6 +142,8 @@ for g in range(pocet):
         count_t = 0
         count_g = 0
         count_c = 0
+        if index >= len(listitems): 
+            break
         for i in dictseq[g]:
              if i == "A":
                 count_a +=1
@@ -151,7 +153,7 @@ for g in range(pocet):
                  count_g +=1
              elif i == "C":
                 count_c +=1
-        print(f"{g}. Sekvence |Pocet A :{count_a} |Pocet T :{count_t} |Pocet G :{count_g} |Pocet C :{count_c}| GC obsah: {((count_g + count_c)/delkaseq)*100}%")
+        print(f"{g+1}. Sekvence | Pocet A :{count_a} | Pocet T :{count_t} | Pocet G :{count_g} | Pocet C :{count_c}| GC obsah: {((count_g + count_c)/delkaseq)*100:.1f}%")
 
 #pro celou sekvenci
 count_a = 0
@@ -170,7 +172,7 @@ for i in fileitems:
         count_c +=1
 print(f"Pocet A :{count_a}\nPocet T :{count_t}\nPocet G :{count_g}\nPocet C :{count_c}")
 print(f"delka: {len(fileitems)}")
-print(f"GC obsah: {((count_g + count_c)/len(fileitems))*100}%")
+print(f"GC obsah: {((count_g + count_c)/len(fileitems))*100:.1f}%")
 
 
 
