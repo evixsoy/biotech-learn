@@ -37,25 +37,37 @@ fileitemsdnalen = len(fileitemsdna)
 
 found = ""
 hledani = 0
-pocitadlo =0
+startval =0
 check = 0
-
+testlist = []
+test = 0
+counter = 0
+again = 0
 for i in range(1,fileitemsdnalen-2):
     trojice = fileitemsdna[i] +fileitemsdna[i+1] +fileitemsdna[i+2]     
-    if trojice == "ATG":
-        trojicefound=""
+    if trojice == "ATG" or startval ==1 :
         print("found")
-        test =0 
-        for g in range(i,fileitemsdnalen-2,3):
-            test +=1 
-            trojice =fileitemsdna[g] +fileitemsdna[g+1] +fileitemsdna[g+2]
-            trojicecheck =fileitemsdna[g] +fileitemsdna[g+1] +fileitemsdna[g+2]
-            if trojice == "TAA" or trojice == "TAG" or trojice == "TGA" or trojice == "ATG" and test > 1:
-                print("break", trojicefound,test)
-                breakval = 1
-                break
-            else:
-                trojicefound+=trojice
-                test +=1 
-        if g == fileitemsdnalen-4:
-            print(False)
+        startval =1
+        opak = 1
+        if counter < 3:
+            counter +=1
+        elif counter ==3 :
+            print(trojice)
+            found+=trojice
+            opak = 0
+            counter = 1
+            again =1
+            if trojice == "TAA" or trojice == "TAG" or trojice == "TGA" or trojice == "ATG":
+                startval = 0
+                print("break")
+                testlist.append(found)
+                counter = 0
+                found = ""
+                test =0
+            if i == fileitemsdnalen-3:
+                print("KONEC NENALEZEN")
+                
+print(testlist)
+            
+
+        

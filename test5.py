@@ -1,4 +1,4 @@
-filepath = "human dna.fa"
+filepath = "human dna copy.fa"
 
 with open(filepath, 'r') as openfile:
     fileitemsdna = openfile.read()
@@ -37,25 +37,27 @@ fileitemsdnalen = len(fileitemsdna)
 
 found = ""
 hledani = 0
-pocitadlo =0
+startval =0
 check = 0
+testlist = ""
+test = 0
+counter = 0
+again = 0
+stop =0
 
 for i in range(1,fileitemsdnalen-2):
     trojice = fileitemsdna[i] +fileitemsdna[i+1] +fileitemsdna[i+2]     
-    if trojice == "ATG":
-        trojicefound=""
-        print("found")
-        test =0 
-        for g in range(i,fileitemsdnalen-2,3):
-            test +=1 
-            trojice =fileitemsdna[g] +fileitemsdna[g+1] +fileitemsdna[g+2]
-            trojicecheck =fileitemsdna[g] +fileitemsdna[g+1] +fileitemsdna[g+2]
-            if trojice == "TAA" or trojice == "TAG" or trojice == "TGA" or trojice == "ATG" and test > 1:
-                print("break", trojicefound,test)
-                breakval = 1
-                break
-            else:
-                trojicefound+=trojice
-                test +=1 
-        if g == fileitemsdnalen-4:
-            print(False)
+    if trojice == "ATG" or startval ==1 :
+        for g in range(i, fileitemsdnalen):
+            testlist+=fileitemsdna[g]
+            print(g)
+        # for k in range((len(testlist))):
+            # trojicecheck = fileitemsdna[k] +fileitemsdna[k+1] +fileitemsdna[k+2]
+                # print(k)
+            # print(len(testlist))
+            # print(trojicecheck)
+            # if trojicecheck == "TAA" or trojicecheck == "TAG" or trojicecheck == "TGA":
+            #     print("found")
+print(testlist)
+input()
+            
