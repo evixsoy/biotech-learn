@@ -38,32 +38,27 @@ else:
     for i in range(delkaseq):
         found =0
         genval = randint(0,99)
-        print(genval)
         for i in oddslist_a:
-            print(i)
             if i == genval:
                generatedDNA += "A"
                found =1
                break
         if found ==0:
             for i in oddslist_t:
-                print(i)
                 if i == genval:
                     generatedDNA += "T"
                     found =1
                     break
         if found ==0:
             for i in oddslist_g:
-                print(i)
                 if i == genval:
                     generatedDNA += "G"
                     found =1
                     break
         if found ==0:
             for i in oddslist_c:
-                print(i)
                 if i == genval:
                     generatedDNA += "C"
                     found =1
                     break       
-    print(generatedDNA)
+    print(f"Generované dna: {generatedDNA} | délka: {delkaseq}")
