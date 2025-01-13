@@ -72,6 +72,10 @@ Vytvořil jednoduchý graf délky sekvencí (např. sloupcový graf).
 Klíčové dovednosti:
 Vizualizace dat.
 Práce s knihovnami.
+Vypočítej klíčové statistiky:
+ ? Rozdělení délky sekvencí.
+Procentuální zastoupení nukleotidů.
+Rozsah a průměr GC obsahu.
 
 9. Analyzátor proteinových sekvencí
 Popis:
