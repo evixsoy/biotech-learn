@@ -1,10 +1,19 @@
-#raw = s mezerama 
-
 filepath = "human dna original.fa"
 
 with open(filepath, 'r') as openfile:
     fileitemsdna = openfile.read()
 
+#filtr mezer z souboru oddela mezery \n
+def filtrmezer(soubor):
+    string = ""
+    for i in soubor:
+            if i  == "\n" :
+                pass
+            else:
+                string+=i
+    return string
+
+#predela dna soubor do rna("predela T -> U")
 def translateToRNA(soubor):
     translation = ""
     for i in soubor:
@@ -13,6 +22,7 @@ def translateToRNA(soubor):
         translation+= i
     return translation
 
+#filtr prochazi jednotlive znaky a hleda zacatecni kodon "ATG" -> jede dalsi loop dokud nenajde koncici kodon "UAG/UAA/UGA" a mezitim vse dava do listu raw
 def filtr(soubor,):
     raw = []
     konec = 0
@@ -25,7 +35,7 @@ def filtr(soubor,):
         if prvniznak + druhyznak + tretiznak =="AUG":
             # print(f"found:{prvniznak + druhyznak + tretiznak}| pozice: {i+3}")
             while konec != 1:
-                for g in range(i+3,len(soubor)-3,3):
+                for g in range(i+3,len(soubor)-3):
                     pendingznak1 = soubor[g]
                     pendingznak2 = soubor[g+1]
                     pendingznak3 = soubor[g+2]
@@ -41,28 +51,15 @@ def filtr(soubor,):
                 string += check
                 raw.append(string)
                 konec =1
-    return filtrmezer(raw,soubor)
+    return raw
 
-def filtrmezer(raw,soubor):
-    filtr = []
-    for i in raw:
-        string = ""
-        for g in range(len(i)):
-            znak = i[g]
-            if znak  == "\n" :
-                pass
-            else:
-                string+=znak
-        filtr.append(string)
-    filtr[len(filtr)-1] += soubor[len(soubor)-1]
-    return filtr
-
+#vezme list raw a projizdi trojice a porovnava je s seznamem kodonu a proteinu(?) a dosazuje do protein finalniho stringu
 def search(seznam):
     genetic_code = {
     'UUU': 'F', 'UUC': 'F', 'UUA': 'L', 'UUG': 'L',
     'UCU': 'S', 'UCC': 'S', 'UCA': 'S', 'UCG': 'S',
-    'UAU': 'Y', 'UAC': 'Y', 'UAA': '|Stop', 'UAG': '|Stop',
-    'UGU': 'C', 'UGC': 'C', 'UGA': '|Stop', 'UGG': 'W',
+    'UAU': 'Y', 'UAC': 'Y', 'UAA': '_', 'UAG': '_',
+    'UGU': 'C', 'UGC': 'C', 'UGA': '_', 'UGG': 'W',
     'CUU': 'L', 'CUC': 'L', 'CUA': 'L', 'CUG': 'L',
     'CCU': 'P', 'CCC': 'P', 'CCA': 'P', 'CCG': 'P',
     'CAU': 'H', 'CAC': 'H', 'CAA': 'Q', 'CAG': 'Q',
@@ -79,32 +76,32 @@ def search(seznam):
     found =0
     completion = [""]
     for g in seznam:
-        vazba = "Start->"
+        vazba = ""
         for i in range(0,len(g) -2,3):
             searchznak1= g[i]
             searchznak2= g[i+1]
             searchznak3= g[i+2]
             for k in genetic_code:
                 if k == searchznak1 + searchznak2 + searchznak3:
-                    # print(f"Found {k}, {genetic_code[k]}")
                     found =1
                     vazba +=genetic_code[k]
             if found == 0:
-                # print(f"NOT FOUND {k}")
-                vazba += genetic_code[k]
+                vazba += "?"
         completion.append(vazba)
     return completion
 
-RNAitems = translateToRNA(fileitemsdna)
+#chod programu aby vse posilalo spravna data a slo spravne postupne
+filtrmezer = filtrmezer(fileitemsdna)
+RNAitems = translateToRNA(filtrmezer)
 filtr = filtr(RNAitems)
-print(filtr)
-print(search(filtr))
+vysledek = search(filtr)
 
-# search(seznam)
+#simple print
+count= 0
+for i in vysledek:
+    print(f"{count}. vazba | {vysledek[count]} ")
+    count += 1
 
-#TODO projizdet seznam po trech znacich a hledat aminokys., kdyz nenajde v listu hodi err
-#TODO export do csv nebo neco,
-#TODO nejaka dalsi vizualizace
-#pozn kdyz je v ATG dalsi ATG nez se ukonci search pro koncici aminokys. dalsi item je ten atg v predchozim atg:
-    #[atgCTAGGCatgCCGGTTtga, atgCCGGTTtga] -> asi to tak nema byt
-#TODO nekdy to nenajde koncici kodon
+
+#TODO export do csv (pandas ) nebo neco
+#TODO nejaka dalsi vizualizace(kolik procent je zastoupeno: A,U,G,C, )
