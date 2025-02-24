@@ -4,4 +4,6 @@
 .idea/vcs.xml
 .idea/workspace.xml
 .idea/inspectionProfiles/profiles_settings.xml
+/simple-projects
+/idea
 test.py
