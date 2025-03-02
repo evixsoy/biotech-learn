@@ -1,8 +1,11 @@
+#idk jestli to funguje na 100%, blbe se overuje
+
 filepath = "human dna original.fa"
 
 with open(filepath, 'r') as openfile:
     fileitemsdna = openfile.read()
 
+fileitemsdna = "AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA"
 #filtr mezer z souboru oddela mezery \n
 def filtrmezer(soubor):
     string = ""
@@ -58,8 +61,8 @@ def search(seznam):
     genetic_code = {
     'UUU': 'F', 'UUC': 'F', 'UUA': 'L', 'UUG': 'L',
     'UCU': 'S', 'UCC': 'S', 'UCA': 'S', 'UCG': 'S',
-    'UAU': 'Y', 'UAC': 'Y', 'UAA': '_', 'UAG': '_',
-    'UGU': 'C', 'UGC': 'C', 'UGA': '_', 'UGG': 'W',
+    'UAU': 'Y', 'UAC': 'Y', 'UAA': '', 'UAG': '',
+    'UGU': 'C', 'UGC': 'C', 'UGA': '', 'UGG': 'W',
     'CUU': 'L', 'CUC': 'L', 'CUA': 'L', 'CUG': 'L',
     'CCU': 'P', 'CCC': 'P', 'CCA': 'P', 'CCG': 'P',
     'CAU': 'H', 'CAC': 'H', 'CAA': 'Q', 'CAG': 'Q',
@@ -94,12 +97,14 @@ def search(seznam):
 filtrmezer = filtrmezer(fileitemsdna)
 RNAitems = translateToRNA(filtrmezer)
 filtr = filtr(RNAitems)
+print(filtr)
 vysledek = search(filtr)
 
 #simple print
 count= 0
 for i in vysledek:
-    print(f"{count}. vazba | {vysledek[count]} ")
+    # print(f"{count}. vazba | {vysledek[count]} ")
+    print(vysledek[count])
     count += 1
 
 
