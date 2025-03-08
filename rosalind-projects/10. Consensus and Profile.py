@@ -8,6 +8,7 @@ for i in test:
     if i != "\n":
         if i == ">":
             if len(string) != 1:
+                #kdyby to cislo za rosalind(v datasetu ) bylo jinaci tak upravit
                 listvalues.append(string[13:])
                 string = ""
         else:
