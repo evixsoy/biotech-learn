@@ -1,4 +1,4 @@
-with open("datasets/rosalind_iev (1).txt", "r") as fileread:
+with open("datasets/rosalind_iev.txt", "r") as fileread:
     contentsraw = fileread.read()
 
 contents =[]
